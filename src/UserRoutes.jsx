@@ -1,12 +1,21 @@
 // src/UserRoutes.jsx
 import React from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'; 
+<<<<<<< HEAD
 import Home from './Home.jsx';   
 import Navbar from './Navbar.jsx';   
 import AllProducts from './AllProducts.jsx';
 import About from './About.jsx';  
 import ConfirmOrder from './ConfirmOrder.jsx'; 
 import ProductDesc from './ProductDesc.jsx';  
+=======
+import Home from './Home';   
+import Navbar from './Navbar';   
+import AllProducts from './AllProducts';
+import About from './About';  
+import ConfirmOrder from './ConfirmOrder'; 
+import ProductDesc from './ProductDesc';  
+>>>>>>> origin/main
 import Footer from './Footer.jsx';// Import ConfirmOrder component
 import './styles.css'; 
 

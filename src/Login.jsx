@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React, { useState} from 'react';
+>>>>>>> origin/main
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -7,11 +11,18 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [wrongPass, setWrongPass] = useState('');
   const navigate = useNavigate();
+<<<<<<< HEAD
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const onSubmit = async (data) => {
     try {
       const response = await fetch(`${apiUrl}/Login`, { // Use backticks for template literals
+=======
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:3001/Login', {
+>>>>>>> origin/main
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +34,11 @@ const Login = () => {
       if (response.ok) {
         const responseData = await response.json();
         localStorage.setItem('user', JSON.stringify(responseData.username)); // Store username in localStorage
+<<<<<<< HEAD
         navigate('/Login/AdminPanel');  // Navigate to AdminPanel on successful login
+=======
+        navigate('/Login/AdminPanel');  // Navigate to AdminPanel on successful 
+>>>>>>> origin/main
       } else {
         const errorData = await response.json();
         setWrongPass(errorData.message); // Set error message received from server
