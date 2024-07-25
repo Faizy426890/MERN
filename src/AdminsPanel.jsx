@@ -7,11 +7,7 @@ import cross from './images/Cross.png';
 import menu from './images/menubar.png';
 import AddProducts from './AddProducts';  
 import CheckOrders from './CheckOrders';  
-<<<<<<< HEAD
 import PlacedOrder from './PlacedOrder'; // Ensure this import is correct
-=======
-import PlacedOrder from './PlacedOrder';// Make sure this import is correct
->>>>>>> origin/main
 import dropdown from './images/Dropdown.png';   
 import dropup from './images/Dropup.png'; 
 
@@ -21,10 +17,7 @@ const AdminPanel = () => {
   const [products, setProducts] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false); // State for dropdown visibility
   const [ordersVisible, setOrdersVisible] = useState(false); // State for orders visibility
-<<<<<<< HEAD
   const apiUrl = import.meta.env.VITE_API_URL; // Fetch API URL from environment variables
-=======
->>>>>>> origin/main
 
   const handleShowControl = () => {
     setControlVisible(!controlVisible);
@@ -39,10 +32,7 @@ const AdminPanel = () => {
     setControlVisible(!controlVisible);
     navigate('/Login/AdminPanel/CheckOrders');
   }; 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
   const handlePlaceOrdersClick = () => { 
     setControlVisible(!controlVisible);
     navigate('/Login/AdminPanel/PlacedOrder');
@@ -50,11 +40,7 @@ const AdminPanel = () => {
 
   const fetchProducts = async () => {
     try {
-<<<<<<< HEAD
       const response = await fetch(`${apiUrl}/products`, { // Corrected URL with backticks
-=======
-      const response = await fetch('http://localhost:3001/products', {
->>>>>>> origin/main
         method: 'GET',
         credentials: 'include',
       });
@@ -70,11 +56,7 @@ const AdminPanel = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-<<<<<<< HEAD
       const response = await fetch(`${apiUrl}/products/${id}`, { // Corrected URL with backticks
-=======
-      const response = await fetch(`http://localhost:3001/products/${id}`, {
->>>>>>> origin/main
         method: 'DELETE',
         credentials: 'include',
       });
@@ -99,11 +81,7 @@ const AdminPanel = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-<<<<<<< HEAD
         const response = await fetch(`${apiUrl}/Login/AdminPanel`, { // Corrected URL with backticks
-=======
-        const response = await fetch('http://localhost:3001/Login/AdminPanel', {
->>>>>>> origin/main
           method: 'GET',
           credentials: 'include',
         });
@@ -142,11 +120,7 @@ const AdminPanel = () => {
               {dropdownVisible && (
                 <div className='order-details'>  
                   <p className='p' onClick={handleOrdersClick}>Pending Orders</p> 
-<<<<<<< HEAD
                   <p className='p' onClick={handlePlaceOrdersClick}>Out for Delivery</p>
-=======
-                  <p className='p' onClick={handlePlaceOrdersClick} >Out for Delivery</p>
->>>>>>> origin/main
                 </div>
               )}
             </div>
@@ -176,11 +150,7 @@ const AdminPanel = () => {
             } />
             <Route path="/Login/AdminPanel/AddProducts" element={<AddProducts />} /> 
             <Route path="/Login/AdminPanel/CheckOrders" element={<CheckOrders />} />  
-<<<<<<< HEAD
             <Route path="/Login/AdminPanel/PlacedOrder" element={<PlacedOrder />} />
-=======
-            <Route path="/Login/AdminPanel/PlacedOrder" element={<PlacedOrder />} />{/* Correct path for CheckOrders */}
->>>>>>> origin/main
           </Routes>
           <Outlet /> {/* This is where nested routes will be rendered */}
         </section>
