@@ -109,7 +109,7 @@ const AddProducts = () => {
     formData.append('productDescription', data.description);
 
     try {
-      const response = await fetch('http://localhost:3001/Login/AdminPanel/Products', {
+      const response = await fetch(`${apiUrl}/Login/AdminPanel/Products`, {
         method: 'POST',
         body: formData,
         credentials: 'include',
