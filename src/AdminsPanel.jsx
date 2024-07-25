@@ -81,26 +81,14 @@ const AdminPanel = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        // Update with your actual credentials
-        const username = 'admin';
-        const password = 'Store786';
-        const authHeader = 'Basic ' + btoa(`${username}:${password}`);
-
         const response = await fetch(`${apiUrl}/Login/Check`, { 
           method: 'GET',
-          headers: {
-            'Authorization': authHeader
-          },
-          credentials: 'include', // Ensure credentials are included if needed
+          credentials: 'include',
         });
-
         if (!response.ok) {
           throw new Error('Unauthorized');
         }
-        
         // Continue with admin panel logic if authorized
-        // For example, you might fetch products here
-        fetchProducts(); 
       } catch (error) {
         console.error('Error:', error);
         navigate('/Login'); 
@@ -108,6 +96,7 @@ const AdminPanel = () => {
     };
 
     checkLoginStatus();
+    fetchProducts(); 
   }, [navigate, apiUrl]);
 
   return (
