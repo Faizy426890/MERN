@@ -163,7 +163,7 @@
       }  
       .Nav-Footer{  
        position: absolute; 
-       bottom: 3vh; 
+       bottom: 8vh; 
        left: 10%;
         display: flex; 
         flex-direction: column; 
