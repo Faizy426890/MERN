@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Nav from './Navbar.jsx';  
 import './Home.css';  
@@ -23,6 +23,10 @@ const Home = () => {
     shirtsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    alert("Order 2 products on the same day and get Free Delivery on the Second Order. Contact on Whatsapp to Claim for free Delivery.");
+  }, []);
+
   return ( 
     <>
       <Nav showAllProducts={handleShowAllProducts} />
@@ -33,7 +37,7 @@ const Home = () => {
               <img src={Cover} alt="Cover" /> 
               <div className="cover-text"> 
                 <h1><span className="highlight">UNLEASH</span> YOUR LOOK</h1>  
-                <a>Discover the latest trends in fashion and update your wardrobe with our new collection.</a> 
+                <p>Discover the latest trends in fashion and update your wardrobe with our new collection.</p> 
                 <button className='Shop-button' onClick={handleShopNowClick}>
                   SHOP NOW
                   <span className="first"></span>
