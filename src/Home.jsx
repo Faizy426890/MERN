@@ -6,7 +6,7 @@ import './Home.css';
 import Shirts from './Shirts.jsx'; 
 import Cover from './images/Cover.jfif';    
 import About from './About.jsx';  // Import the About component  
-import Alert from './Alert.jsx'; // Import the Alert component
+import Alerts from './Alerts.jsx'; // Import the Alert component
 
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
@@ -27,7 +27,7 @@ const Home = () => {
 
   return ( 
     <>
-      <Alert /> {/* Include the Alert component here */}
+      <Alerts /> {/* Include the Alert component here */}
       <Nav showAllProducts={handleShowAllProducts} />
       <Routes> 
         <Route path="/" element={ 
