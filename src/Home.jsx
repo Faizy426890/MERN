@@ -8,7 +8,7 @@ import About from './About.jsx';  // Import the About component
 
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
-  const [showAlert, setShowAlert] = useState(true); // Add state for the alert visibility
+  const [showAlert, setShowAlert] = useState(true); // State to control alert visibility
   const navigate = useNavigate(); 
   const shirtsRef = useRef(null);
 
@@ -25,18 +25,12 @@ const Home = () => {
   };
 
   const handleCloseAlert = () => {
-    setShowAlert(false); // Function to hide the alert
+    setShowAlert(false); // Close the alert when user clicks the close button
   };
 
   return ( 
     <>
       <Nav showAllProducts={handleShowAllProducts} />
-      {showAlert && (
-        <div className="alert">
-          <p>Order 2 products on the same day and get free delivery on the 2nd one!</p>
-          <button className="close-alert" onClick={handleCloseAlert}>X</button>
-        </div>
-      )}
       <Routes> 
         <Route path="/" element={ 
           <div>
@@ -54,6 +48,12 @@ const Home = () => {
                 </button>
               </div>
             </section>  
+            {showAlert && (
+              <div className="alert">
+                <p>Order 2 products on the same day and get free delivery on the 2nd one. Reach us on WhatsApp to claim the free delivery of the second order...</p>
+                <button className="close-alert" onClick={handleCloseAlert}>Close</button>
+              </div>
+            )}
             <div ref={shirtsRef}>
               <Shirts showAllProducts={showAllProducts} onBuyNow={handleBuyNow} />  
             </div>
