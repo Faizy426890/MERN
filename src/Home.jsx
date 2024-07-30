@@ -29,7 +29,13 @@ const Home = () => {
   };
 
   return ( 
-    <>
+    <> 
+        {showAlert && (
+              <div className="alert">
+                <p>Order 2 products on the same day and get free delivery on the 2nd one. Reach us on WhatsApp to claim the free delivery of the second order...</p>
+                <button className="close-alert" onClick={handleCloseAlert}>Close</button>
+              </div>
+            )}
       <Nav showAllProducts={handleShowAllProducts} />
       <Routes> 
         <Route path="/" element={ 
@@ -47,13 +53,7 @@ const Home = () => {
                   <span className="fourth"></span>
                 </button>
               </div>
-            </section>  
-            {showAlert && (
-              <div className="alert">
-                <p>Order 2 products on the same day and get free delivery on the 2nd one. Reach us on WhatsApp to claim the free delivery of the second order...</p>
-                <button className="close-alert" onClick={handleCloseAlert}>Close</button>
-              </div>
-            )}
+            </section> 
             <div ref={shirtsRef}>
               <Shirts showAllProducts={showAllProducts} onBuyNow={handleBuyNow} />  
             </div>
