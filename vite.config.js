@@ -6,11 +6,19 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        'react', 
+        'react',
         'react-dom',
-        'sweetalert2',  // Add SweetAlert2 if it's causing issues
-        'sweetalert2-react-content'  // Add SweetAlert2 React Content if it's causing issues
+        'sweetalert2',
+        'sweetalert2-react-content'
       ],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          sweetalert2: 'Swal',
+          'sweetalert2-react-content': 'SwalReactContent'
+        }
+      }
     },
   },
 });
