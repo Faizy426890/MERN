@@ -105,25 +105,36 @@ body {
   top: 0;
   right: 0;
 }
-/* sweetalert-custom.css */
-.swal2-popup {
-  background: #343a40 !important;
-  color: #fff !important;
+/* src/Home.css */
+.alert {
+  background-color: black;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure it appears above other content */
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.swal2-title {
-  color: #fff !important;
+.alert button.close-alert {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 10px;
 }
 
-.swal2-content {
-  color: #fff !important;
+.alert button.close-alert:hover {
+  color: #ccc;
 }
 
-.swal2-confirm {
-  background-color: #3085d6 !important;
-  border-color: #3085d6 !important;
-  color: #fff !important;
-}
 
 .Shop-button .second {
   content: "";

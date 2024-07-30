@@ -1,4 +1,3 @@
-// src/Home.jsx
 import React, { useState, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Nav from './Navbar.jsx';  
@@ -6,10 +5,10 @@ import './Home.css';
 import Shirts from './Shirts.jsx'; 
 import Cover from './images/Cover.jfif';    
 import About from './About.jsx';  // Import the About component  
-import Alerts from './Alerts.jsx'; // Import the Alert component
 
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [showAlert, setShowAlert] = useState(true); // Add state for the alert visibility
   const navigate = useNavigate(); 
   const shirtsRef = useRef(null);
 
@@ -25,10 +24,19 @@ const Home = () => {
     shirtsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleCloseAlert = () => {
+    setShowAlert(false); // Function to hide the alert
+  };
+
   return ( 
     <>
-      <Alerts /> {/* Include the Alert component here */}
       <Nav showAllProducts={handleShowAllProducts} />
+      {showAlert && (
+        <div className="alert">
+          <p>Order 2 products on the same day and get free delivery on the 2nd one!</p>
+          <button className="close-alert" onClick={handleCloseAlert}>X</button>
+        </div>
+      )}
       <Routes> 
         <Route path="/" element={ 
           <div>
