@@ -8,11 +8,12 @@ import Shirts from './Shirts.jsx';
 import Cover from './images/Cover.jfif';    
 import About from './About.jsx';  // Import the About component  
 
+const MySwal = withReactContent(Swal);
+
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
   const navigate = useNavigate(); 
   const shirtsRef = useRef(null);
-  const MySwal = withReactContent(Swal);
 
   const handleShowAllProducts = () => {
     setShowAllProducts(true);
@@ -31,9 +32,6 @@ const Home = () => {
       title: 'Special Offer!',
       text: 'Order 2 products on the same day and get Free Delivery on the Second Order.',
       icon: 'info',
-      background: '#343a40',
-      color: '#fff',
-      confirmButtonColor: '#3085d6',
       confirmButtonText: 'OK'
     });
   }, []);

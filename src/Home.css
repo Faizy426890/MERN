@@ -105,6 +105,25 @@ body {
   top: 0;
   right: 0;
 }
+/* sweetalert-custom.css */
+.swal2-popup {
+  background: #343a40 !important;
+  color: #fff !important;
+}
+
+.swal2-title {
+  color: #fff !important;
+}
+
+.swal2-content {
+  color: #fff !important;
+}
+
+.swal2-confirm {
+  background-color: #3085d6 !important;
+  border-color: #3085d6 !important;
+  color: #fff !important;
+}
 
 .Shop-button .second {
   content: "";
