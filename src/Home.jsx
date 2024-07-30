@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Nav from './Navbar.jsx';  
 import './Home.css';  
@@ -8,9 +8,12 @@ import About from './About.jsx';  // Import the About component
 
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
-  const [showAlert, setShowAlert] = useState(true); // State to control alert visibility
   const navigate = useNavigate(); 
   const shirtsRef = useRef(null);
+
+  useEffect(() => {
+    alert("Order 2 products on the same day and get free delivery on the 2nd one. Reach us on WhatsApp to claim the free delivery of the second order...");
+  }, []);
 
   const handleShowAllProducts = () => {
     setShowAllProducts(true);
@@ -24,18 +27,8 @@ const Home = () => {
     shirtsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleCloseAlert = () => {
-    setShowAlert(false); // Close the alert when user clicks the close button
-  };
-
   return ( 
-    <> 
-        {showAlert && (
-              <div className="alert">
-                <p>Order 2 products on the same day and get free delivery on the 2nd one. Reach us on WhatsApp to claim the free delivery of the second order...</p>
-                <button className="close-alert" onClick={handleCloseAlert}>Close</button>
-              </div>
-            )}
+    <>
       <Nav showAllProducts={handleShowAllProducts} />
       <Routes> 
         <Route path="/" element={ 
@@ -53,7 +46,7 @@ const Home = () => {
                   <span className="fourth"></span>
                 </button>
               </div>
-            </section> 
+            </section>  
             <div ref={shirtsRef}>
               <Shirts showAllProducts={showAllProducts} onBuyNow={handleBuyNow} />  
             </div>
