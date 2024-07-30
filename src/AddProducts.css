@@ -30,7 +30,7 @@
   
   .AddProducts-Form form {
     display: flex; 
-    height: 100vh; 
+    height: 125vh; 
     width: 35vw;
     flex-direction: column; 
     justify-content: center; 
@@ -113,7 +113,7 @@
 }
   @media (max-width: 1024px) { 
     .AddProducts-Form form { 
-        height: 55vh; 
+        height: 65vh; 
         width: 52vw;
     }  
     .inputs{ 
@@ -136,7 +136,7 @@
 }
 @media (max-width: 768px) { 
     .AddProducts-Form form { 
-        height: 100vh; 
+        height: 110vh; 
         width: 62vw;
     }    
     .AddProducts-Form { 
@@ -161,7 +161,7 @@
 }
 @media (max-width: 568px) { 
   .AddProducts-Form form { 
-      height: 90vh; 
+      height: 100vh; 
       width: 82vw;
   }    
   .AddProducts-Form { 
@@ -183,7 +183,7 @@
 } 
 @media (max-width: 395px) { 
   .AddProducts-Form form { 
-      height: 105vh; 
+      height: 115vh; 
       width: 82vw;
   }    
   .AddProducts-Form { 
@@ -208,7 +208,7 @@
    
   .AddProducts-Form form {
     display: flex; 
-    height: 70vh; 
+    height: 80vh; 
     width: 85vw;
     flex-direction: column; 
     justify-content: center; 
