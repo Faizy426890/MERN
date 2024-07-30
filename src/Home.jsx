@@ -1,14 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+// src/Home.jsx
+import React, { useState, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import Nav from './Navbar.jsx';  
 import './Home.css';  
 import Shirts from './Shirts.jsx'; 
 import Cover from './images/Cover.jfif';    
 import About from './About.jsx';  // Import the About component  
-
-const MySwal = withReactContent(Swal);
+import Alert from './Alert.jsx'; // Import the Alert component
 
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
@@ -27,17 +25,9 @@ const Home = () => {
     shirtsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    MySwal.fire({
-      title: 'Special Offer!',
-      text: 'Order 2 products on the same day and get Free Delivery on the Second Order.',
-      icon: 'info',
-      confirmButtonText: 'OK'
-    });
-  }, []);
-
   return ( 
     <>
+      <Alert /> {/* Include the Alert component here */}
       <Nav showAllProducts={handleShowAllProducts} />
       <Routes> 
         <Route path="/" element={ 
@@ -46,7 +36,7 @@ const Home = () => {
               <img src={Cover} alt="Cover" /> 
               <div className="cover-text"> 
                 <h1><span className="highlight">UNLEASH</span> YOUR LOOK</h1>  
-                <p>Discover the latest trends in fashion and update your wardrobe with our new collection.</p> 
+                <a>Discover the latest trends in fashion and update your wardrobe with our new collection.</a> 
                 <button className='Shop-button' onClick={handleShopNowClick}>
                   SHOP NOW
                   <span className="first"></span>
