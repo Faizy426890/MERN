@@ -42,7 +42,10 @@
 } 
 .Desc-data p{ 
 margin: 15px 0; 
-} 
+}  
+.prices{ 
+    margin-top: 8px;
+}
 .prices p{ 
     margin: 0 10px;
 }
@@ -91,7 +94,7 @@ margin: 15px 0;
     color: #a3a3a3; 
 }
 .Section-MayLike{ 
- margin-top: 150px;
+ margin-top: 250px;
  display: flex;  
  flex-direction: column;
  justify-content: center;
