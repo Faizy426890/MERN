@@ -42,6 +42,9 @@
 } 
 .Desc-data p{ 
 margin: 15px 0; 
+} 
+.prices p{ 
+    margin: 0 10px;
 }
 .full{ 
     width: 100%;
