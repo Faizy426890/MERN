@@ -42,7 +42,9 @@ const AllProducts = ({ onBuyNow }) => {
 
   const handleBuyNow = (e, product) => {
     e.stopPropagation(); // Prevent click event from bubbling up
-    onBuyNow(product);
+    if (product.productStock > 0) { // Ensure stock is greater than 0 before proceeding
+      onBuyNow(product);
+    }
   };
 
   if (isLoading) {
