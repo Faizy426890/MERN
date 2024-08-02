@@ -14,7 +14,7 @@ const AllProducts = ({ onBuyNow }) => {
       try {
         const response = await fetch(`${apiUrl}/products`, {
           method: 'GET',
-          credentials: 'include', // Include cookies with request if needed
+          credentials: 'include',
         });
 
         if (!response.ok) {
@@ -41,7 +41,7 @@ const AllProducts = ({ onBuyNow }) => {
   };
 
   const handleBuyNow = (e, product) => {
-    e.stopPropagation(); // Prevent the click from bubbling up to the product container
+    e.stopPropagation();
     onBuyNow(product);
   };
 
@@ -60,25 +60,30 @@ const AllProducts = ({ onBuyNow }) => {
       </div>
       <section className="shirts-section">
         <div className='Display-Products'>
-          {memoizedProducts.map((product) => (
-            <div key={product._id} className="Product-container" onClick={() => handleProductClick(product)}>
-              <div className='Product-list'>
-                {product.images[0] && <img src={product.images[0]} alt={product.productName} />}    
-                <h2>{product.productName}</h2> 
-                <div className='prices'>
-                  <p className='old-price'>PKR: {product.oldPrice}</p> 
-                  <p>PKR: {product.productPrice}</p>     
+          {memoizedProducts.map((product) => {
+            // Debugging: Log the product's stock value
+            console.log(`Product ID: ${product._id}, Stock: ${product.productStock}`);
+
+            return (
+              <div key={product._id} className="Product-container" onClick={() => handleProductClick(product)}>
+                <div className='Product-list'>
+                  {product.images[0] && <img src={product.images[0]} alt={product.productName} />}    
+                  <h2>{product.productName}</h2> 
+                  <div className='prices'>
+                    <p className='old-price'>PKR: {product.oldPrice}</p> 
+                    <p>PKR: {product.productPrice}</p>     
+                  </div>
+                </div>
+                <div className="wrapper">
+                  {Number(product.productStock) === 0 ? (
+                    <a className='a sold-out'>Sold Out</a>
+                  ) : (
+                    <a className='a' onClick={(e) => handleBuyNow(e, product)}>Buy Now</a>
+                  )}
                 </div>
               </div>
-              <div className="wrapper">
-                {product.productStock === 0 ? (
-                  <a className='a sold-out'>Sold Out</a> // Use the same wrapper with "sold-out" class
-                ) : (
-                  <a className='a' onClick={(e) => handleBuyNow(e, product)}>Buy Now</a>
-                )}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section> 
     </>
