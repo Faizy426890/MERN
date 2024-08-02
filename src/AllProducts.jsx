@@ -66,12 +66,16 @@ const AllProducts = ({ onBuyNow }) => {
                 {product.images[0] && <img src={product.images[0]} alt={product.productName} />}    
                 <h2>{product.productName}</h2> 
                 <div className='prices'>
-                <p className='old-price'>PKR: {product.oldPrice}</p> 
-                <p>PKR: {product.productPrice}</p>     
+                  <p className='old-price'>PKR: {product.oldPrice}</p> 
+                  <p>PKR: {product.productPrice}</p>     
                 </div>
               </div>
               <div className="wrapper">
-                <a className='a' onClick={(e) => handleBuyNow(e, product)}>Buy Now</a>
+                {product.productStock === 0 ? (
+                  <a className='a sold-out'>Sold Out</a> // Use the same wrapper with "sold-out" class
+                ) : (
+                  <a className='a' onClick={(e) => handleBuyNow(e, product)}>Buy Now</a>
+                )}
               </div>
             </div>
           ))}

@@ -62,10 +62,11 @@ const Shirts = ({ onBuyNow }) => {
               <div className='Product-list'>
                 {product.images[0] && <img src={product.images[0]} alt={product.productName} />} 
                 <h2>{product.productName}</h2>  
-               <div className='prices'> 
-                <p className='old-price'>PKR: {product.oldPrice}</p>
-                <p>PKR: {product.productPrice}</p>     
+                <div className='prices'> 
+                  <p className='old-price'>PKR: {product.oldPrice}</p>
+                  <p>PKR: {product.productPrice}</p>     
                 </div>
+                {product.productStock === 0 && <p className="sold-out">Sold Out</p>} {/* Display Sold Out if stock is 0 */}
               </div>
               <div className="wrapper">
                 <a 

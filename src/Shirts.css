@@ -19,7 +19,19 @@
 }
 .AllProduct-head h1{  
 margin-top: 10vh;
+} 
+/* Shirts.css */
+
+.sold-out {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+} 
+.sold-out {
+  background-color: #6c757d; /* Different color to indicate sold out */
+  cursor: not-allowed; /* Indicate that it's not clickable */
 }
+
 #a{ 
   width: 30%; 
   margin-top: 3vh;
@@ -185,4 +197,4 @@ font-weight: 500;
   } 
 
 }
-
+ 
