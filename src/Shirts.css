@@ -24,11 +24,9 @@ margin-top: 10vh;
 
 
 .sold-out {
-  background-color: #242424; /* Light gray for sold-out items */
   color: #ff0808; /* White text */
   cursor: not-allowed; /* Show as not clickable */
   text-align: center; /* Center text */
-  padding: 10px;
   border: 1px solid #ccc; /* Light border */
   display: inline-block;
   text-decoration: none; /* Remove underline */
