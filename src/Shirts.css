@@ -22,15 +22,18 @@ margin-top: 10vh;
 } 
 /* Shirts.css */
 
+
 .sold-out {
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-} 
-.sold-out {
-  background-color: #6c757d; /* Different color to indicate sold out */
-  cursor: not-allowed; /* Indicate that it's not clickable */
+  background-color: #242424; /* Light gray for sold-out items */
+  color: #ff0808; /* White text */
+  cursor: not-allowed; /* Show as not clickable */
+  text-align: center; /* Center text */
+  padding: 10px;
+  border: 1px solid #ccc; /* Light border */
+  display: inline-block;
+  text-decoration: none; /* Remove underline */
 }
+
 
 #a{ 
   width: 30%; 
