@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Reviews.css';
 import ReviewForm from './ReviewForm';
 
@@ -8,10 +8,13 @@ const Reviews = ({ reviewsReload, setreviewsReload }) => {
   const apiUrl = import.meta.env.VITE_API_URL; 
   const [visibleReviews, setVisibleReviews] = useState(3); // State to track how many reviews to show
 
+  // Create a ref for the review heading
+  const reviewHeadingRef = useRef(null);
+
   // Fetch reviews
   const fetchReviews = async () => {
     try {
-      const response = await fetch(`${apiUrl}/reviews`); // Replace with your actual API endpoint
+      const response = await fetch(`${apiUrl}/reviews`);
       const data = await response.json();
       setReviews(data);
     } catch (error) {
@@ -22,10 +25,15 @@ const Reviews = ({ reviewsReload, setreviewsReload }) => {
   // Fetch reviews when the component mounts or reviewsReload changes
   useEffect(() => {
     fetchReviews();
-    // Reset reviewsReload to false after fetching reviews
+
     if (reviewsReload) {
       setreviewsReload(false); // Reset the state
       setShowForm(false); // Hide the form
+
+      // Scroll to the review heading
+      if (reviewHeadingRef.current) {
+        reviewHeadingRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }, [reviewsReload]);
 
@@ -35,15 +43,14 @@ const Reviews = ({ reviewsReload, setreviewsReload }) => {
 
   // Function to mask the last 8 characters of the email
   const maskEmail = (email) => {
-    const emailParts = email.split('@'); // Split the email into local part and domain
-    const localPart = emailParts[0]; // Local part before the @ symbol
+    const emailParts = email.split('@');
+    const localPart = emailParts[0];
     const domain = emailParts[1];
 
-    // If the local part is long enough, mask the middle 8 characters
     if (localPart.length > 8) {
       const visibleStart = localPart.slice(0, 3);
-      const visibleEnd = localPart.slice(-3); // Last 3 characters visible
-      return `${visibleStart}********${visibleEnd}@${domain}`; // Mask middle 8 characters
+      const visibleEnd = localPart.slice(-3);
+      return `${visibleStart}********${visibleEnd}@${domain}`;
     }
 
     return email;
@@ -68,7 +75,7 @@ const Reviews = ({ reviewsReload, setreviewsReload }) => {
 
   return (
     <>
-      <div className='Review-Heading'>
+      <div className='Review-Heading' ref={reviewHeadingRef}>
         <h2>
           What people think <span className='Colour-change'>About us</span>
         </h2>
@@ -81,7 +88,7 @@ const Reviews = ({ reviewsReload, setreviewsReload }) => {
             reviews.slice(0, visibleReviews).map((review) => (
               <div key={review.id || review._id} className='review-item'>
                 <h4>{review.name}</h4>
-                <p id='Review-mail'>{maskEmail(review.email)}</p> {/* Show masked email */} 
+                <p id='Review-mail'>{maskEmail(review.email)}</p>
                 <p className='review-date'>{formatDate(review.createdAt)}</p>
                 <p id='Review-Msg'>{review.review}</p>
                 
