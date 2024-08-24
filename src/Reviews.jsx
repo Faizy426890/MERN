@@ -2,26 +2,32 @@ import React, { useState, useEffect } from 'react';
 import './Reviews.css';
 import ReviewForm from './ReviewForm';
 
-const Reviews = () => {
+const Reviews = ({ reviewsReload, setreviewsReload }) => {
   const [showForm, setShowForm] = useState(false);
   const [reviews, setReviews] = useState([]); 
   const apiUrl = import.meta.env.VITE_API_URL; 
   const [visibleReviews, setVisibleReviews] = useState(3); // State to track how many reviews to show
 
-  // Fetch reviews when the component mounts
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/reviews`); // Replace with your actual API endpoint
-        const data = await response.json();
-        setReviews(data);
-      } catch (error) {
-        console.error('Error fetching reviews:', error);
-      }
-    };
+  // Fetch reviews
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/reviews`); // Replace with your actual API endpoint
+      const data = await response.json();
+      setReviews(data);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    }
+  };
 
+  // Fetch reviews when the component mounts or reviewsReload changes
+  useEffect(() => {
     fetchReviews();
-  }, []);
+    // Reset reviewsReload to false after fetching reviews
+    if (reviewsReload) {
+      setreviewsReload(false); // Reset the state
+      setShowForm(false); // Hide the form
+    }
+  }, [reviewsReload]);
 
   const handleWriteReviewClick = () => {
     setShowForm(!showForm);
@@ -106,7 +112,7 @@ const Reviews = () => {
       </div>
 
       {/* Conditionally show the review form */}
-      {showForm && <ReviewForm />}
+      {showForm && <ReviewForm setreviewsReload={setreviewsReload} />}
     </>
   );
 };

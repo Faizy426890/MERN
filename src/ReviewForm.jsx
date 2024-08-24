@@ -2,21 +2,24 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './ReviewForm.css';  
 
-const ReviewForm = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm(); // Add reset
+const ReviewForm = ({ setreviewsReload }) => {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const apiUrl = import.meta.env.VITE_API_URL; 
+
   const onSubmit = async (data) => {
     try {
       const response = await fetch(`${apiUrl}/reviews`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });  
+
       if (response.ok) {
         console.log('Review submitted successfully');
-        reset(); // Reset the form after a successful submission
+        reset(); // Reset the form after successful submission
+        setreviewsReload(true); // Set reviewsReload to true
       } else {
         console.error('Error submitting review');
       }
@@ -48,8 +51,8 @@ const ReviewForm = () => {
             required: 'Email is required',
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email address'
-            }
+              message: 'Invalid email address',
+            },
           })}
         />
         {errors.email && <p className='error-message'>{errors.email.message}</p>}
@@ -65,6 +68,6 @@ const ReviewForm = () => {
       <button className='Submit-Review' type='submit'>SUBMIT REVIEW</button>
     </form>
   );
-}; 
+};
 
 export default ReviewForm;

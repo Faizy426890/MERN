@@ -6,12 +6,11 @@ import Shirts from './Shirts.jsx';
 import Cover from './images/Cover.jfif';     
 import Reviews from './Reviews.jsx';
 import About from './About.jsx';  // Import the About component  
-
 const Home = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
   const navigate = useNavigate(); 
   const shirtsRef = useRef(null);
-
+  const [reviewsReload , setreviewsReload] = useState(false);
   useEffect(() => {
     alert("Order 2 products on the same day and get free delivery on the 2nd one. Reach us on WhatsApp to claim the free delivery of the second order...");
   }, []);
@@ -51,7 +50,7 @@ const Home = () => {
             <div ref={shirtsRef}>
               <Shirts showAllProducts={showAllProducts} onBuyNow={handleBuyNow} />  
             </div> 
-            <Reviews/>
+            <Reviews reviewsReload={reviewsReload} setreviewsReload={setreviewsReload} />
           </div>
         } />
         <Route path="/about" element={<About />} /> 
