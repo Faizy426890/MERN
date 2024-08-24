@@ -7,7 +7,7 @@ const ReviewForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://localhost:3001/reviews', {
+      const response = await fetch(await fetch(`${apiUrl}reviews`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

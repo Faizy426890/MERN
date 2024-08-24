@@ -4,14 +4,15 @@ import ReviewForm from './ReviewForm';
 
 const Reviews = () => {
   const [showForm, setShowForm] = useState(false);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]); 
+  const apiUrl = import.meta.env.VITE_API_URL; 
   const [visibleReviews, setVisibleReviews] = useState(3); // State to track how many reviews to show
 
   // Fetch reviews when the component mounts
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch('http://localhost:3001/reviews'); // Replace with your actual API endpoint
+        const response = await fetch(`${apiUrl}reviews`); // Replace with your actual API endpoint
         const data = await response.json();
         setReviews(data);
       } catch (error) {
