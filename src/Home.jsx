@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Nav from './Navbar.jsx';  
 import './Home.css';  
 import Shirts from './Shirts.jsx'; 
-import Cover from './images/Cover.jpg';     
+import Cover from './images/covers.jpg';     
 import Reviews from './Reviews.jsx';
 import About from './About.jsx';  // Import the About component  
 const Home = () => {
