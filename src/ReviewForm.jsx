@@ -4,7 +4,7 @@ import './ReviewForm.css';
 
 const ReviewForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm(); // Add reset
-
+  const apiUrl = import.meta.env.VITE_API_URL; 
   const onSubmit = async (data) => {
     try {
       const response = await fetch(await fetch(`${apiUrl}reviews`), {
