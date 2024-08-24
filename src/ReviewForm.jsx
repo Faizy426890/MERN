@@ -7,7 +7,7 @@ const ReviewForm = () => {
   const apiUrl = import.meta.env.VITE_API_URL; 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch(await fetch(`${apiUrl}reviews`), {
+      const response = await fetch(await fetch(`${apiUrl}/reviews`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

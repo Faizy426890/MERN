@@ -12,7 +12,7 @@ const Reviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch(`${apiUrl}reviews`); // Replace with your actual API endpoint
+        const response = await fetch(`${apiUrl}/reviews`); // Replace with your actual API endpoint
         const data = await response.json();
         setReviews(data);
       } catch (error) {
